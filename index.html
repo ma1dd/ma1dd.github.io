@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SanStar Аналитика</title>
+    <!-- Подключаем шрифт для большей похожести на современный интерфейс -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Подключаем иконки (например, Material Icons) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Заглушка для CSS -->
+    <style>
+        /* Простой сброс стилей и базовая сетка */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Стили для шапки */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #d3d3d3;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .logo-text {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .nav-link:hover, .nav-link.active {
+            background-color: #ccc;
+        }
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-name {
+            font-size: 14px;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #aaa; /* Заглушка */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Стили для основного контента */
+        .main-content {
+            padding: 20px;
+        }
+
+        /* Стили для виджетов */
+        .widget {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .widget-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
+        .widget-controls {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            background-color: #e0e0e0;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+        }
+        .btn:hover {
+            background-color: #d0d0d0;
+        }
+        .btn-primary {
+            background-color: #3a6b83;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #2c5263;
+        }
+
+        /* Стили для KPI */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .kpi-card {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+        }
+        .kpi-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #3a6b83;
+        }
+        .kpi-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Стили для графиков */
+        .chart-placeholder {
+            height: 300px;
+            background-color: #f9f9f9;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+
+        /* Стили для таблицы */
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #f5f5f5;
+            font-weight: 500;
+            color: #555;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Стили для сессий */
+        .session-list {
+            list-style: none;
+        }
+        .session-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .session-item:last-child {
+            border-bottom: none;
+        }
+        .session-title {
+            font-weight: 500;
+        }
+        .session-date {
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* Стили для фильтров (скрыты по умолчанию в этой верстке) */
+        .filters-panel {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none; /* Скрыто в статичной верстке */
+        }
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .filter-group input, .filter-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Стили для адаптивности (пример) */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="https://via.placeholder.com/40x40" alt="Логотип" class="logo"> <!-- Замените на реальный логотип -->
+            <span class="logo-text">SanStar Аналитика</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="nav-link active">Главная</a>
+            <a href="#" class="nav-link">Товары</a>
+            <a href="#" class="nav-link">Аналитические сессии</a>
+            <a href="#" class="nav-link">Отчеты</a>
+            <a href="#" class="nav-link">Профиль</a>
+        </nav>
+        <div class="user-section">
+            <span class="user-name">Иванов А.А.</span>
+            <div class="avatar">ИА</div> <!-- Заглушка для аватара -->
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Панель фильтров (пример, скрыт в CSS выше) -->
+            <div class="filters-panel">
+                <h3>Фильтры</h3>
+                <div class="filter-group">
+                    <label for="dateRange">Период:</label>
+                    <select id="dateRange">
+                        <option>Последние 7 дней</option>
+                        <option>Последние 30 дней</option>
+                        <option>Пользовательский</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="categoryFilter">Категория:</label>
+                    <select id="categoryFilter">
+                        <option>Все</option>
+                        <option>Зеркальные шкафы</option>
+                        <option>Тумбы</option>
+                        <option>Зеркала</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary">Применить</button>
+            </div>
+
+            <!-- Блок KPI -->
+            <section class="widget">
+                <div class="widget-header">
+                    <h2 class="widget-title">Ключевые показатели (KPI)</h2>
+                    <div class="widget-controls">
+                        <button class="btn"><i class="material-icons">refresh</i> Обновить</button>
+                        <button class="btn"><i class="material-icons">settings</i></button>
+                    </div>
+                </div>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-value">12,487</div>
+                        <div class="kpi-label">Всего отзывов</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">4.3 / 5</div>
+                        <div class="kpi-label">Средний рейтинг</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">78%</div>
+                        <div class="kpi-label">Позитивные отзывы</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">15%</div>
+                        <div class="kpi-label">Негативные отзывы</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">+2.5%</div>
+                        <div class="kpi-label">Изменение NPS</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Визуализация: Динамика тональности -->
+            <section class="widget">
+                <div class="widget-header">
+                    <h2 class="widget-title">Динамика тональности</h2>
+                    <div class="widget-controls">
+                        <button class="btn">7 дней</button>
+                        <button class="btn">30 дней</button>
+                        <button class="btn">Год</button>
+                    </div>
+                </div>
+                <div class="chart-placeholder">
+                    [График: Линейный график изменения % позитивных/негативных отзывов во времени]
+                </div>
+            </section>
+
+            <!-- Визуализация: Частотность тем -->
+            <section class="widget">
+                <div class="widget-header">
+                    <h2 class="widget-title">Частотность тем</h2>
+                    <div class="widget-controls">
+                        <button class="btn">Топ-5</button>
+                        <button class="btn">Топ-10</button>
+                    </div>
+                </div>
+                <div class="chart-placeholder">
+                    [График: Столбчатая диаграмма или облако тегов для тем]
+                </div>
+            </section>
+
+            <!-- Таблица: Последние отзывы -->
+            <section class="widget">
+                <div class="widget-header">
+                    <h2 class="widget-title">Последние отзывы</h2>
+                    <div class="widget-controls">
+                        <button class="btn"><i class="material-icons">filter_list</i> Фильтры</button>
+                        <button class="btn"><i class="material-icons">search</i> Поиск</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Продукт</th>
+                                <th>Рейтинг</th>
+                                <th>Тональность</th>
+                                <th>Ключевая тема</th>
+                                <th>Дата</th>
+                                <th>Источник</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Зеркало SanStar 50</td>
+                                <td>4.5</td>
+                                <td>Позитивный</td>
+                                <td>Дизайн</td>
+                                <td>2025-11-10</td>
+                                <td>Wildberries</td>
+                            </tr>
+                            <tr>
+                                <td>Тумба Arista 85</td>
+                                <td>3.0</td>
+                                <td>Негативный</td>
+                                <td>Сборка</td>
+                                <td>2025-11-09</td>
+                                <td>Ozon</td>
+                            </tr>
+                            <tr>
+                                <td>Зеркальный шкаф Altea 60</td>
+                                <td>5.0</td>
+                                <td>Позитивный</td>
+                                <td>Функциональность</td>
+                                <td>2025-11-09</td>
+                                <td>Сайт</td>
+                            </tr>
+                            <!-- Добавьте больше строк по необходимости -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Список: Последние аналитические сессии -->
+            <section class="widget">
+                <div class="widget-header">
+                    <h2 class="widget-title">Последние аналитические сессии</h2>
+                    <div class="widget-controls">
+                        <button class="btn">Создать</button>
+                    </div>
+                </div>
+                <ul class="session-list">
+                    <li class="session-item">
+                        <div class="session-title">Сравнение зеркальных шкафов</div>
+                        <div class="session-date">01.11.2025</div>
+                    </li>
+                    <li class="session-item">
+                        <div class="session-title">Анализ отзывов на тумбы Arista</div>
+                        <div class="session-date">28.10.2025</div>
+                    </li>
+                    <li class="session-item">
+                        <div class="session-title">Оценка эффективности кампании Como</div>
+                        <div class="session-date">25.10.2025</div>
+                    </li>
+                    <!-- Добавьте больше элементов по необходимости -->
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+.home-container {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Шапка */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d3d3d3;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 40px;
+    margin-right: 5px;
+  }
+  
+  .logo-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .nav-menu {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .avatar-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+  
+  /* Панель фильтров */
+  .filters-panel {
+    position: fixed;
+    top: 60px; /* Высота шапки */
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    animation: slideDown 0.3s ease-out;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .filters-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .filters-content {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .filter-group {
+    margin-bottom: 20px;
+  }
+  
+  .filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .filter-group select,
+  .filter-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    accent-color: #007bff;
+  }
+  
+  /* Основной контент */
+  .main-content {
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Блоки KPI */
+  .kpi-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .kpi-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .kpi-card h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+    background-color: #3a6b83;
+    color: white;
+    padding: 10px;
+    border-radius: 6px 6px 0 0;
+    text-align: center;
+  }
+  
+  .kpi-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .kpi-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .kpi-item:last-child {
+    border-bottom: none;
+  }
+  
+  .kpi-item span:first-child {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .btn-details,
+  .btn-period,
+  .btn-filter,
+  .btn-load-more {
+    background-color: #3a6b83;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .btn-details:hover,
+  .btn-period:hover,
+  .btn-filter:hover,
+  .btn-load-more:hover {
+    background-color: #2c5263;
+  }
+  
+  .btn-period.active {
+    background-color: #2c5263;
+  }
+  
+  .chart-container {
+    height: 200px;
+    margin: 15px 0;
+  }
+  
+  .chart-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  /* Секция сессий */
+  .sessions-section {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .section-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .search-filter {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .search-input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    flex: 1;
+  }
+  
+  .sessions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .table-header {
+    display: flex;
+    background-color: #3a6b83;
+    color: white;
+    border-radius: 6px 6px 0 0;
+    padding: 10px 15px;
+    font-weight: 500;
+  }
+  
+  .table-col {
+    flex: 1;
+    padding: 0 5px;
+  }
+  
+  .table-col:first-child {
+    flex: 2;
+  }
+  
+  .table-body {
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+  }
+  
+  .table-row {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+  }
+  
+  .table-row:last-child {
+    border-bottom: none;
+  }
+  
+  .table-cell {
+    flex: 1;
+    padding: 0 5px;
+    word-break: break-word;
+  }
+  
+  .table-cell:first-child {
+    flex: 2;
+  }
+  
+  .more-options {
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .more-options:hover {
+    color: #333;
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 768px) {
+    .kpi-section {
+      flex-direction: column;
+    }
+  
+    .filters-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .table-header,
+    .table-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .table-col,
+    .table-cell {
+      flex: none;
+      width: 100%;
+      padding: 5px 0;
+    }
+  
+    .table-col:first-child,
+    .table-cell:first-child {
+      margin-bottom: 5px;
+    }
+  }

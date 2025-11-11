@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SanStar Аналитика</title>
+    <!-- Подключение Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Подключение D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Подключение React и ReactDOM из CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Подключение Babel для преобразования JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Подключение вашего CSS -->
+    <link rel="stylesheet" href="Home.css">
+    <!-- Для других страниц подключите соответствующие CSS файлы -->
+    <!-- <link rel="stylesheet" href="Products.css"> -->
+    <!-- <link rel="stylesheet" href="Sessions.css"> -->
+    <!-- <link rel="stylesheet" href="Profile.css"> -->
+    <!-- <link rel="stylesheet" href="EditProfile.css"> -->
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Подключение компонентов React -->
+    <script type="text/babel" src="Home.js"></script>
+    <!-- <script type="text/babel" src="Products.js"></script> -->
+    <!-- <script type="text/babel" src="Sessions.js"></script> -->
+    <!-- <script type="text/babel" src="Profile.js"></script> -->
+    <!-- <script type="text/babel" src="EditProfile.js"></script> -->
+
+    <script type="text/babel">
+        // Имитация роутинга для демонстрации
+        const renderPage = () => {
+            const path = window.location.pathname;
+            if (path === '/products.html' || path === '/products') {
+                return React.createElement(Products, null);
+            } else if (path === '/sessions.html' || path === '/sessions') {
+                return React.createElement(Sessions, null);
+            } else if (path === '/profile.html' || path === '/profile') {
+                return React.createElement(Profile, null);
+            } else if (path === '/edit_profile.html' || path === '/edit_profile') {
+                return React.createElement(EditProfile, null);
+            } else {
+                // По умолчанию главная страница
+                return React.createElement(Home, null);
+            }
+        };
+
+        const App = () => {
+            return renderPage();
+        };
+
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(React.createElement(App));
+    </script>
+</body>
+</html>
