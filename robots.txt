@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /search/
+Disallow: /login/
+Disallow: /register/
+Disallow: /auth/
+Disallow: /admin/
+Disallow: /admin-panel/
+Disallow: /profile/
+Disallow: /edit_profile/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /error/
+Disallow: /print/
+Sitemap: http://https://ma1dd.github.io/sitemap.xml
