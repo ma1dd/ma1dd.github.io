@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+    <url>
+        <loc>https://your-sanstar-site.ru/</loc>
+        <lastmod>2025-11-11T10:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://your-sanstar-site.ru/#/home</loc>
+        <lastmod>2025-11-11T10:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://your-sanstar-site.ru/#/products</loc>
+        <lastmod>2025-11-11T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://your-sanstar-site.ru/#/sessions</loc>
+        <lastmod>2025-11-11T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://your-sanstar-site.ru/#/reports</loc>
+        <lastmod>2025-11-11T10:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://your-sanstar-site.ru/#/alerts</loc>
+        <lastmod>2025-11-11T10:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.70</priority>
+    </url>
+    <!-- Пример динамических URL (шаблон) -->
+    <url>
+        <loc>https://your-sanstar-site.ru/#/products/{product_id}</loc>
+        <lastmod>2025-11-11T10:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.60</priority>
+    </url>
+    <url>
+        <loc>https://your-sanstar-site.ru/#/sessions/{session_id}</loc>
+        <lastmod>2025-11-11T10:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.60</priority>
+    </url>
+
+</urlset>
